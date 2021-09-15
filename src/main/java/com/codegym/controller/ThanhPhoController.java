@@ -50,7 +50,7 @@ public class ThanhPhoController {
     @GetMapping("/Edit/{id}")
     public ModelAndView showEdit(@PathVariable long id) {
         ModelAndView modelAndView = new ModelAndView("Edit");
-        modelAndView.addObject("ThanhPho", iThanhPhoService.findById(id));
+        modelAndView.addObject("thanhPho", iThanhPhoService.findById(id));
         return modelAndView;
     }
 

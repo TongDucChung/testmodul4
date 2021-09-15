@@ -8,14 +8,24 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        table th, td {text-align: center}
+        .container {
+            background-color:#cbccce;
+            padding-top: 50px;
+            padding-bottom: 100px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+    </style>
 </head>
-<body>
-
+<body class="container">
+<h2>Quan Li Thanh Pho</h2>
 <div class="container">
-    <h2>Quan Li Thanh Pho</h2>
-    <form method="post">
-        <table class="table">
 
+    <form method="post" th:object="${thanhPho}">
+        <table class="table">
             <thead>
             <tr>
                 <th>Ten</th>
@@ -27,12 +37,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:object="${ThanhPho}" >
+            <tr>
                 <td><input th:field="*{tenTP}"></td>
-
                 <td>
                     <select th:field="*{datNuoc}">
-                        <option th:each="datNuoc:${listDatNuoc}"th:text="${datNuoc.tenDn}" th:value="${datNuoc.id}"></option>
+                        <option th:each="datNuoc:${listDatNuoc}" th:text="${datNuoc.tenDn}"
+                                th:value="${datNuoc.id}"></option>
                     </select>
                 </td>
                 <td><input th:field="*{dienTich}"></td>
@@ -40,20 +50,18 @@
                 <td><input th:field="*{gdp}"></td>
                 <td><input th:field="*{moTa}"></td>
             </tr>
-            <tr th:object="${ThanhPho}">
+            <tr>
                 <td th:if="${#fields.hasErrors('tenTP')}" th:errors="*{tenTP}">Xin nhap it nhat 2 ki tu</td>
                 <td></td>
-                <td th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}">Xin hay nhap so duong</td>
-                <td th:if="${#fields.hasErrors('danSo')}" th:errors="*{danSo}">Xin hay nhap so duong</td>
-                <td th:if="${#fields.hasErrors('gdp')}" th:errors="*{gdp}">Xin hay nhap so duong</td>
+                <td th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}">Xin nhap it nhat 2 ki tu</td>
+                <td th:if="${#fields.hasErrors('danSo')}" th:errors="*{danSo}">Xin nhap it nhat 2 ki tu</td>
+                <td th:if="${#fields.hasErrors('gdp')}" th:errors="*{gdp}">Xin nhap it nhat 2 ki tu</td>
                 <td></td>
-
             </tr>
             </tbody>
         </table>
         <button type="submit" class="btn btn-default">Edit</button>
     </form>
 </div>
-
 </body>
 </html>
