@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Quan Li Thanh Pho</h2>
+  <td><a href="/home/create" type="button" class="btn btn-default">Them thanh pho</a></td>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Thanh Pho</th>
+      <th>Quoc Gia</th>
+      <th>Sua</th>
+      <th>Xoa</th>
+      <th>Xem</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="thanhPho:${list}">
+      <td th:text="${thanhPho.tenTP}"></td>
+      <td th:text="${thanhPho.datNuoc.getTenDn()}"></td>
+      <td><a th:href="@{/home/Edit/{id}(id=${thanhPho.id})}" type="button" class="btn btn-default">Edit</a></td>
+      <td><a th:href="@{/home/delete/{id}(id=${thanhPho.id})}" type="button" class="btn btn-default">delete</a></td>
+      <td><a th:href="@{/home/detail/{id}(id=${thanhPho.id})}" type="button" class="btn btn-default">show</a></td>
+
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Xoa Thanh Pho</h1>
+<h1>Ban co chac muon xoa thanh pho nay khong?</h1>
+<form  method="post">
+    <input hidden th:value="${ThanhPho.id}">
+    <button type="submit">Delete</button>
+</form>
+<a href="/home/show" type="button">Cancel</a>
+</body>
+</html>

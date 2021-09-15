@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Quản lí Nhân Viên</h2>
+  <form method="">
+    <a href="/home/show" type="button">Xem Danh Sach Thanh Pho</a>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Ten</th>
+        <th>Quoc Gia</th>
+        <th>Dien Tich</th>
+        <th>Dan So</th>
+        <th>GDP</th>
+        <th>Gioi Thieu</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:object="${ThanhPho}" >
+        <td th:text="${ThanhPho.tenTP}"></td>
+        <td th:text="${ThanhPho.datNuoc.getTenDn()}"></td>
+        <td th:text="${ThanhPho.dienTich}"></td>
+        <td th:text="${ThanhPho.danSo}"></td>
+        <td th:text="${ThanhPho.gdp}"></td>
+        <td th:text="${ThanhPho.moTa}"></td>
+        <td><a th:href="@{/home/Edit/{id}(id=${ThanhPho.id})}" type="button" class="btn btn-default">update</a></td>
+        <td><a th:href="@{/home/delete/{id}(id=${ThanhPho.id})}" type="button" class="btn btn-default">delete</a></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </form>
+</div>
+
+</body>
+</html>

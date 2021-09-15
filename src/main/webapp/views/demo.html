@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Quan Li Thanh Pho</h2>
+  <form action="/home/create" method="post">
+    <table class="table">
+
+      <thead>
+      <tr>
+        <th>Ten</th>
+        <th>Quoc Gia</th>
+        <th>Dien Tich</th>
+        <th>Dan So</th>
+        <th>GDP</th>
+        <th>Gioi Thieu</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:object="${ThanhPho}" >
+        <td><input th:field="*{tenTP}"></td>
+
+        <td>
+          <select th:field="*{datNuoc}">
+            <option th:each="datNuoc:${listDatNuoc}"th:text="${datNuoc.tenDn}" th:value="${datNuoc.id}"></option>
+          </select>
+        </td>
+        <td><input th:field="*{dienTich}"></td>
+        <td><input th:field="*{danSo}"></td>
+        <td><input th:field="*{gdp}"></td>
+        <td><input th:field="*{moTa}"></td>
+      </tr>
+      <tr th:object="${ThanhPho}">
+        <td th:if="${#fields.hasErrors('tenTP')}" th:errors="*{tenTP}">Xin nhap it nhat 2 ki tu</td>
+        <td></td>
+        <td th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}">Xin hay nhap so duong</td>
+        <td th:if="${#fields.hasErrors('danSo')}" th:errors="*{danSo}">Xin hay nhap so duong</td>
+        <td th:if="${#fields.hasErrors('gdp')}" th:errors="*{gdp}">Xin hay nhap so duong</td>
+        <td th:if="${#fields.hasErrors('moTa')}" th:errors="*{moTa}">Xin hay nhap so duong</td>
+
+      </tr>
+      </tbody>
+    </table>
+    <button type="submit" class="btn btn-default">Create</button>
+  </form>
+</div>
+
+</body>
+</html>
